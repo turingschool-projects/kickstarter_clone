@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :users, as: :user, path: 'users' do
     get '/:user_id/projects', to: "projects#index"
+    get '/users/:id/projects/new', to: "projects#new"
   end
   resources :users, only: [:new, :create, :index]
 

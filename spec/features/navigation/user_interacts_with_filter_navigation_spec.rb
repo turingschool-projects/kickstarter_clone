@@ -4,6 +4,14 @@ RSpec.desctibe "user interacts with filter nav-bar" do
   it "user sets the filters they want for projects" do
     visit projects_path
     expect(page).to have_css("filter-nav-bar")
+    expect(page).to have_css("category-filter")
+    expect(page).to have_css("location-filter")
+    expect(page).to have_css("tag-filter")
+    expect(page).to have_css("sorting-filter")
+    select 'All', from: 'category-filter'
+    select 'Denver', from: 'location-filter'
+    select 'Artisanal', from: 'tag-filter'
+    select 'Magic', from: 'sorting-filter'
   end
 end
 

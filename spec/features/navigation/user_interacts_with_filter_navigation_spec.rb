@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.desctibe "user interacts with filter nav-bar" do
   it "user sets the filters they want for projects" do
+    projects = create_list(:project, 20)
+    project = projects.first
     visit projects_path
     expect(page).to have_css("filter-nav-bar")
     expect(page).to have_css("category-filter")
@@ -12,6 +14,15 @@ RSpec.desctibe "user interacts with filter nav-bar" do
     select 'Denver', from: 'location-filter'
     select 'Artisanal', from: 'tag-filter'
     select 'Magic', from: 'sorting-filter'
+    expect(Project.count).to eq(20) #this likely won't be the right number it is a dummy variable
+    expect(page).to have_content("20 Results")
+    within first(.project-box) do
+      expect(page).to have_content(project.name)
+      expect(page).to have_content(project.author_name)
+      expect(page).to have_content(project.pledge_amount)
+      expect(page).to have_content(project.percent_funded)
+      expect(page).to have_content(project.days_to_go)
+    end
   end
 end
 

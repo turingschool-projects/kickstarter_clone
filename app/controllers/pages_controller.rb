@@ -1,8 +1,10 @@
-class HomeController < ApplicationController
+class PagesController < ApplicationController
 
-  def index
+  def home
     @categories = Category.all
     @projects = Project.all
     @most_funded = Project.most_funded
   end
+
+  def about; end
 end

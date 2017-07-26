@@ -12,8 +12,8 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    binding.pry
     @project = current_user.projects.new(project_params)
-
     if @project.save
       redirect_to new_reward_path(project_id: @project.id)
     else
@@ -28,13 +28,15 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
+      city = City.find_or_create_by(name: params[:city])
+      city.country_id ||= params[:country_id]
+
       params.require(:project).permit(:title,
                                       :description,
                                       :image_url,
                                       :target_amount,
                                       :category_id,
-                                      :country_id,
-                                      :completion_date)
+                                      :completion_date).merge(city_id: city.id)
     end
 
     def set_categories

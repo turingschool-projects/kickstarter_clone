@@ -29,5 +29,5 @@ Rails.application.routes.draw do
   end
   resources :payments, only: [:create]
 
-  resources :locations, only: [:new]
+  resources :locations, only: [:new, :create]
 end

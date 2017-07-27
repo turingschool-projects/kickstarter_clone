@@ -17,12 +17,20 @@ describe "user can create a project" do
       end
       expect(page).to have_content("Where will your project be located?")
 
-      fill_in "Postal Code", with: "81625"
+      fill_in "City", with: "Craig"
+      fill_in "Country", with: "United States"
+      click_on "Continue to Project"
+
+      expect(page).to have_content("Alert: Please input required fields.")
+      expect(current_path).to eq(new_location_path)
+
+      fill_in "Postal code", with: "81625"
       fill_in "City", with: "Craig"
       fill_in "Country", with: "United States"
       click_on "Continue to Project"
 
       expect(current_path).to eq(new_project_path)
+      expect(Location.last.city).to eq("Craig")
       expect(page).to have_content("Tell Us About Your Project")
 
       fill_in "Title", with: "Artisan Firewood"

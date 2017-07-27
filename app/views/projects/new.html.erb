@@ -18,7 +18,10 @@
     @categories.order(:name),
     :id,
     :name,
-    include_blank: true %><br>  
+    include_blank: true %><br>
+
+    <%= f.label :city %>
+    <%= f.text_field :city %>
 
     <%= f.label :country %>
     <%= f.collection_select :country_id,

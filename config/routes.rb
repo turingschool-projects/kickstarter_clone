@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'pages#home'
 
-  get '/signup',    to: "users#new"
-  get '/login',     to: "sessions#new"
-  get '/logout',    to: "sessions#destroy"
+  get '/signup',       to: "users#new"
+  get '/login',        to: "sessions#new"
+  get '/logout',       to: "sessions#destroy"
   get '/confirmation', to: "confirmation#show"
+  get '/about',        to: "pages#about"
 
   namespace :users, as: :user, path: 'users' do
     get '/:user_id/projects', to: "projects#index"
+    get '/users/:id/projects/new', to: "projects#new"
   end
   resources :users, only: [:new, :create, :index]
 

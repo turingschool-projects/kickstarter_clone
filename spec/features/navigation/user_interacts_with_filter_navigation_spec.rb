@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.desctibe "user interacts with filter nav-bar" do
-  it "user sets the filters they want for projects" do
+  xit "user sets the filters they want for projects" do
     projects = create_list(:project, 20)
     project = projects.first
     visit projects_path

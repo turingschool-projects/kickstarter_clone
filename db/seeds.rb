@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 class Seed
 
@@ -17,7 +10,7 @@ class Seed
     seed.generate_user_with_projects
     seed.generate_users
     seed.generate_project_backers
-   
+
   end
 
   def generate_project_backers
@@ -99,7 +92,7 @@ class Seed
         City.create(name: city, country_id: rand(1..4))
       puts "City #{City.name} created"
     end
-  end 
+  end
 end
 
 Seed.start

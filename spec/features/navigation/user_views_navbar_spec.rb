@@ -15,7 +15,7 @@ RSpec.feature "User views navbar" do
 			expect(page).to have_content("Sign Up")
       expect(page).to have_content("All Projects")
 			expect(page).to have_content("Categories")
-			expect(page).to have_content("Start a project")
+			expect(page).to have_content("Start a Project")
     end
   end
 

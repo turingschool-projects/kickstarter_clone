@@ -1,3 +1,4 @@
+<h1>Tell Us About Your Project</h1>
 <div class="container">
   <%= form_for @project do |f| %>
 
@@ -18,20 +19,13 @@
     @categories.order(:name),
     :id,
     :name,
-    include_blank: true %><br>  
-
-    <%= f.label :country %>
-    <%= f.collection_select :country_id,
-                            @countries.order(:name),
-                            :id,
-                            :name,
-                            include_blank: true %><br>
+    include_blank: true %><br>
 
     <%= f.label :completion_date%>
     <%= f.date_select :completion_date,
                       class: "datepicker",
                       selected: 30.days.from_now  %>
 
-    <%= f.submit "Save and continue" %>
+    <%= f.submit "Continue to Rewards" %>
   <% end %>
 </div>

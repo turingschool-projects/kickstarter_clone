@@ -45,6 +45,10 @@ class Project < ApplicationRecord
     self.project_backers.sum("pledge_amount")
   end
 
+  def percentage_pledged
+    (total_pledged.to_f/target_amount)*100
+  end
+
   def self.most_funded
     Project.joins(:project_backers).group(:id).order('sum(pledge_amount)desc').first
   end
@@ -53,7 +57,4 @@ class Project < ApplicationRecord
    (Date.parse(end_date) - Date.today).to_s
   end
 
-  def days_remaining
-   (Date.parse(end_date) - Date.today).to_s
-  end
 end

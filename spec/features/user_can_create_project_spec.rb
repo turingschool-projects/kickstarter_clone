@@ -4,16 +4,18 @@ describe "user can create a project" do
   before :each do
     create(:project)
   end
+
   context "when a user is logged in" do
     it "user can create a new project" do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit root_path
       within('.nav-wrapper') do
-        click_on "Start a project"
+        click_on "Start a Project"
 
         expect(current_path).to eq new_location_path
       end
+      expect(page).to have_content("Where will your project be located?")
 
       fill_in "Postal Code", with: "81625"
       fill_in "City", with: "Craig"
@@ -44,5 +46,6 @@ describe "user can create a project" do
       click_on "Finish Creating Project"
 
       expect(current_path).to eq(project_path(Project.last))
+    end
   end
 end

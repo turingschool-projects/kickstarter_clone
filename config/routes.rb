@@ -28,4 +28,6 @@ Rails.application.routes.draw do
     post :authorization, on: :collection
   end
   resources :payments, only: [:create]
+
+  resources :locations, only: [:new]
 end

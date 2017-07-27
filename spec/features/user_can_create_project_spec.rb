@@ -12,7 +12,7 @@ describe "user can create a project" do
       within('.nav-wrapper') do
         click_on "Start a project"
 
-        expect(current_path).to eq new_project_path
+        expect(current_path).to eq new_location_path
       end
     end
   end

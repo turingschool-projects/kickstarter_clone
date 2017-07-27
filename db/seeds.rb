@@ -4,10 +4,10 @@ class Seed
   def self.start
     seed = Seed.new
     seed.generate_categories
-    seed.generate_locations
     seed.generate_projects
-    seed.generate_user_with_projects
+    seed.generate_locations
     seed.generate_users
+    seed.generate_user_with_projects
     seed.generate_project_backers
   end
 
@@ -25,7 +25,7 @@ class Seed
 
   def generate_users
       User.create!(name: "Bill",
-                   email: "me@me.com",
+                   email: "user@user.com",
                    password: "password",
                    password_confirmation: "password"
                    )
@@ -40,13 +40,14 @@ class Seed
   end
 
   def generate_locations
-    10.times do
+    10.times do |n|
       location = Location.create!(
         postal_code: Faker::Address.postcode,
         city: Faker::Address.city,
         country: Faker::Address.country
       )
       location.projects << Project.all.shuffle[0..4]
+    puts "Location #{n} has been created"
     end
   end
 

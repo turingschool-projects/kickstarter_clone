@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.desctibe "user interacts with filter nav-bar" do
-  it "user sets the filters they want for projects" do
+RSpec.describe "user interacts with filter nav-bar" do
+  xit "user sets the filters they want for projects" do
     projects = create_list(:project, 20)
     project = projects.first
     visit projects_path
@@ -16,7 +16,7 @@ RSpec.desctibe "user interacts with filter nav-bar" do
     select 'Magic', from: 'sorting-filter'
     expect(Project.count).to eq(20) #this likely won't be the right number it is a dummy variable
     expect(page).to have_content("20 Results")
-    within first(.project-box) do
+    within first(".project-box") do
       expect(page).to have_content(project.name)
       expect(page).to have_content(project.author_name)
       expect(page).to have_content(project.pledge_amount)

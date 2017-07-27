@@ -9,7 +9,6 @@ RSpec.feature "doners can fund projects" do
         to receive(:current_user).
         and_return(user)
 
-        save_and_open_page
       visit project_path(project)
 
       click_on("Back this project")

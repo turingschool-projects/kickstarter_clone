@@ -24,9 +24,14 @@ class Seed
   end
 
   def generate_users
+      User.create!(name: "Bill",
+                   email: "me@me.com",
+                   password: "password",
+                   password_confirmation: "password"
+                   )
     10.times do |n|
       u = User.create!(name: "user #{n}",
-                   email: "user#{n}@example.com",
+                   email: Faker::Internet.email,
                    password: "password",
                    password_confirmation: "password"
                    )
@@ -41,12 +46,12 @@ class Seed
         city: Faker::Address.city,
         country: Faker::Address.country
       )
-      location.projects << generate_projects
+      location.projects << Project.all.shuffle[0..4]
     end
   end
 
   def generate_projects
-    10.times do
+    50.times do
       Project.create!(
         title: Faker::Commerce.product_name + rand(0..1000).to_s,
         description: Faker::Hipster.paragraph,
@@ -79,7 +84,7 @@ class Seed
   def generate_user_with_projects
     user = User.create!(
     name: "Sample User",
-    email: "email#{rand(5000)}@email.com",
+    email: Faker::Internet.email,
     password: "password",
     password_confirmation: "password"
     )

@@ -8,6 +8,7 @@ describe "user can create a project" do
   context "when a user is logged in" do
     it "user can create a new project" do
       user = create(:user)
+      category = create(:category, name: "Art")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit root_path
       within('.nav-wrapper') do
@@ -36,8 +37,8 @@ describe "user can create a project" do
       fill_in "Title", with: "Artisan Firewood"
       fill_in "Description", with: "Curated Firewood"
       fill_in "Image", with: "wwww.google.com"
-      fill_in "Target Amount", with: "3000"
-      select "Art", from: "Categories"
+      fill_in "Target amount", with: "3000"
+      select "Art", from: "project[category_id]"
       select "2018", from: "project[completion_date(1i)]"
       select "August", from: "project[completion_date(2i)]"
       select "26", from: "project[completion_date(3i)]"

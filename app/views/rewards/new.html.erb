@@ -1,3 +1,4 @@
+<h1>How Will You Reward Your Donors?</h1>
 <%= form_for @reward do |f| %>
 	<%= f.label :title %>
   <%= f.text_field :title, placeholder: "Title" %>
@@ -14,5 +15,5 @@
     <%= f.number_field :limit, placeholder: "Limit" %>
   </div>
 	<%= hidden_field_tag 'project_id', params[:project_id] %>
-	<%= f.submit "Save and Continue" %>
+	<%= f.submit "Finish Creating Project" %>
  <% end %>

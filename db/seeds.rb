@@ -17,7 +17,7 @@ class Seed
                             project: Project.all.shuffle.first,
                             user: User.all.shuffle.first,
                             reward: Reward.all.shuffle.first,
-                            pledge_amount: rand(10..1000)
+                            pledge_amount: rand(200..1000)
       )
       puts "ProjectBacker #{proj.user} backing #{proj.project.title} created"
     end

@@ -19,18 +19,6 @@
   <div class="card medium col s4">
     <h5>Nearly Funded</h5>
   </div>
-  <div class="col s3 offset-s1">
-    <div class="categories">
-      <div class="card-panel teal ">
-        <span class="white-text">
-	     		<h5>Categories</h5>
-	       		<% @categories.each do |category| %>
-		    			<li><%= link_to category.name, category_path(category) %></li>
-            <% end %>
-	   		</span>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="project-list row container">

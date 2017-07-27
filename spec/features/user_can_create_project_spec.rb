@@ -44,6 +44,8 @@ describe "user can create a project" do
       select "26", from: "project[completion_date(3i)]"
       click_on "Continue to Rewards"
 
+      expect(Project.last.location.city).to eq("Craig")
+
       expect(current_path).to eq(new_reward_path)
       expect(page).to have_content("How Will You Reward Your Donors?")
 

@@ -6,7 +6,7 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     if @location.save
-      redirect_to new_project_path
+      redirect_to new_project_path(location_id: @location.id)
     else
       flash[:notice] = "Alert: Please input required fields."
       redirect_to new_location_path

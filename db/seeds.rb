@@ -54,7 +54,7 @@ class Seed
   def generate_projects
     50.times do
       Project.create!(
-        title: Faker::Commerce.product_name + rand(0..1000).to_s,
+        title: Faker::Commerce.product_name,
         description: Faker::Hipster.paragraph,
         image_url: "https://unsplash.it/600/400?image=#{rand(0..100)}",
         target_amount: rand(1000..10000).to_f,

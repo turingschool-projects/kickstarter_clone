@@ -7,6 +7,9 @@
     </div>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4"><%= link_to @most_funded.title, project_path(@most_funded) %><i class="material-icons right">more_vert</i></span>
+      <div class="progress">
+        <div class="determinate" style="width: <%= @most_funded.percentage_pledged %>%"></div>
+      </div>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4"><%= @most_funded.title %><i class="material-icons right">close</i></span>

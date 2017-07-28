@@ -21,7 +21,6 @@
     <h5>Nearly Funded</h5>
   </div>
 </div>
-
 <div class="project-list row container">
   <% @projects.each do |project| %>
   <div class="card medium col s4 m3 l3">
@@ -33,6 +32,11 @@
       <p>Percentage Pledged:</p>
       <div class="progress">
         <div class="determinate" style="width: <%= project.percentage_pledged %>%"></div>
+      </div>
+      <div class="project-stats">
+        <p><strong><%#= @project.total_pledged %></strong> pledged</p>
+        <p><strong><%#= @project.total_pledged %></strong> funded</p>
+        <p><strong><%#= @project.total_pledged %></strong> days to go</p>
       </div>
     </div>
     <div class="card-reveal">

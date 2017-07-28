@@ -13,7 +13,6 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(project_params)
     if @project.save
-      binding.pry
       redirect_to new_reward_path(project_id: @project.id)
     else
       redirect_to new_project_path

@@ -22,7 +22,7 @@
               pledged of <%= @project.formatted_price %> goal
               <h5><%= @project.project_backers.count %></h5>
               backers
-              <h5>7</h5>
+              <h5><%= @project.days_remaining %></h5>
               days to go<br><br>
           </div>
           <div class="card-action">

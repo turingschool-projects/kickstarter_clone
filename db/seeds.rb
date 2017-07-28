@@ -58,7 +58,7 @@ class Seed
         description: Faker::Hipster.paragraph,
         image_url: "https://unsplash.it/600/400?image=#{rand(0..100)}",
         target_amount: rand(1000..10000).to_f,
-        completion_date: Faker::Time.forward(30),
+        completion_date: rand(Date.civil(2017, 9, 1)..Date.civil(2018, 12, 31)),
         category: Category.all.sample,
         rewards: generate_rewards,
       )

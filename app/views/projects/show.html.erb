@@ -14,10 +14,11 @@
       <div class="col s4 m16">
         <div class="card-stacked">
           <div class="card-content">
+            <p>Percentage Pledged:</p>
             <div class="progress">
               <div class="determinate" style="width: <%= @project.percentage_pledged %>%"></div>
             </div><br>
-              <div class="amount"><%= @project.total_pledged %></div>
+              <div class="amount">$<%= @project.total_pledged %></div>
               pledged of <%= @project.formatted_price %> goal
               <h5><%= @project.project_backers.count %></h5>
               backers

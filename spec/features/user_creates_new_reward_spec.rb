@@ -5,7 +5,6 @@ RSpec.feature "User adds a new reward to the database" do
 
     it "can create rewards" do
       category = create(:category)
-      country = create(:country)
       user = create(:user)
       date = (Date.today + 30.days).strftime("%B %d, %Y")
       # project = create(:project)
@@ -19,7 +18,6 @@ RSpec.feature "User adds a new reward to the database" do
       fill_in 'project[description]',      with: 'Lots of paint'
       fill_in 'project[image_url]',        with: image_url
       fill_in 'project[target_amount]',    with: '10000'
-      select country.name,                 from: 'project_country_id'
 
       click_on 'Save and continue'
 

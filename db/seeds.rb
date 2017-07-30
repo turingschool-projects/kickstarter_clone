@@ -1,23 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 class Seed
 
   def self.start
     seed = Seed.new
-    seed.generate_countries
-    seed.generate_cities
     seed.generate_categories
     seed.generate_projects
-    seed.generate_user_with_projects
+    seed.generate_locations
     seed.generate_users
+    seed.generate_user_with_projects
     seed.generate_project_backers
-   
   end
 
   def generate_project_backers
@@ -26,16 +17,21 @@ class Seed
                             project: Project.all.shuffle.first,
                             user: User.all.shuffle.first,
                             reward: Reward.all.shuffle.first,
-                            pledge_amount: rand(10..1000)
+                            pledge_amount: rand(200..1000)
       )
       puts "ProjectBacker #{proj.user} backing #{proj.project.title} created"
     end
   end
 
   def generate_users
+      User.create!(name: "Bill",
+                   email: "user@user.com",
+                   password: "password",
+                   password_confirmation: "password"
+                   )
     10.times do |n|
       u = User.create!(name: "user #{n}",
-                   email: "user#{n}@example.com",
+                   email: Faker::Internet.email,
                    password: "password",
                    password_confirmation: "password"
                    )
@@ -43,18 +39,28 @@ class Seed
     end
   end
 
+  def generate_locations
+    10.times do |n|
+      location = Location.create!(
+        postal_code: Faker::Address.postcode,
+        city: Faker::Address.city,
+        country: Faker::Address.country
+      )
+      location.projects << Project.all.shuffle[0..4]
+    puts "Location #{n} has been created"
+    end
+  end
+
   def generate_projects
     50.times do
       Project.create!(
-        title: Faker::Commerce.product_name + rand(0..1000).to_s,
+        title: Faker::Commerce.product_name,
         description: Faker::Hipster.paragraph,
         image_url: "https://unsplash.it/600/400?image=#{rand(0..100)}",
-        target_amount: rand(1000..100000).to_f,
-        completion_date: Faker::Time.forward(30),
+        target_amount: rand(1000..10000).to_f,
+        completion_date: rand(Date.civil(2017, 9, 1)..Date.civil(2018, 12, 31)),
         category: Category.all.sample,
         rewards: generate_rewards,
-        country_id: rand(1..4),
-        city_id: rand(1..5)
       )
       puts "Project #{Project.all.last.title} created"
     end
@@ -76,30 +82,16 @@ class Seed
     end
   end
 
-  def generate_countries
-    countries = ['United States', 'Canada', 'Mexico', "France"]
-    countries.each do |country|
-      Country.create(name: country)
-    end
-  end
-
   def generate_user_with_projects
     user = User.create!(
     name: "Sample User",
-    email: "email#{rand(5000)}@email.com",
+    email: Faker::Internet.email,
     password: "password",
     password_confirmation: "password"
     )
     user.projects << Project.all.shuffle[0..4]
   end
 
-  def generate_cities
-    cities = ["New York", "Paris", "Denver", "Chicago", "San Francisco"]
-      cities.each do |city|
-        City.create(name: city, country_id: rand(1..4))
-      puts "City #{City.name} created"
-    end
-  end 
 end
 
 Seed.start

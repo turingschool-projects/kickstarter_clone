@@ -1,0 +1,46 @@
+<div class="carousel carousel-slider">
+  <a class="carousel-item" href="#one!"><img src="assets/images/placeholder_1.jpg"></a>
+  <a class="carousel-item" href="#one!"><img src="assets/images/placeholder_2.jpg"></a>
+</div>
+
+<div class="header-container">
+  <div class="video-container">
+    <video preload = "true" autoplay = "autoplay" loop = "loop"
+    volume = "0" poster = "pic.jpg">
+    <source src="https://d3mlfyygrfdi2i.cloudfront.net/Halsey_15sec_06282017_%283%29.mp4" type="video/mp4" >
+    </video>
+    <div class="text-wrapper">
+      <h1>Jump in. Get moving. Do the thing you<br /> need to do for the world.</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container row">
+  <div class="card medium col s4">
+   <h5>Most funded</h5>
+   <%if @most_funded %>
+    <div class="card-image waves-effect waves-block waves-light">
+      <%= image_tag @most_funded.image_url, class: "activator responsive-img" %>
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4"><%= link_to @most_funded.title, project_path(@most_funded) %><i class="material-icons right">more_vert</i></span>
+      <div class="progress">
+        <div class="determinate" style="width: <%= @most_funded.percentage_pledged %>%"></div>
+      </div>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><%= @most_funded.title %><i class="material-icons right">close</i></span>
+      <%= @most_funded.description %>
+    </div>
+    <%end%>
+  </div>
+  <div class="card medium col s4">
+    <h5>Nearly Funded</h5>
+  </div>
+</div>
+
+<%= render partial: "helpers/project_card.html.erb" %>
+
+<script type="text/javascript">
+  $('.carousel.carousel-slider').carousel({fullWidth: true});
+</script>

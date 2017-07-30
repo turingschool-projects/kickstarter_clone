@@ -4,9 +4,9 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find_by(name: params[:id])
+    @category = Category.find_by(name: params[:id]) || Category.find(params[:id])
     @projects = @category.projects
-    if params[:newest]
+    if params[:end_date]
       @projects = end_date(@projects)
     end
   end

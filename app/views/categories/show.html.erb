@@ -1,2 +1,3 @@
 <h1><%= @category.name %> </h1>
+<%= link_to "End Date", category_path(@category, end_date: true) %>
 <%= render 'helpers/project_card' %>

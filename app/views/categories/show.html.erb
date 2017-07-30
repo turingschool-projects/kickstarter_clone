@@ -1,3 +1,6 @@
 <h1><%= @category.name %> </h1>
+<p>Sort By:</p>
 <%= link_to "End Date", category_path(@category, end_date: true) %>
+<%= link_to "Most Pledged", category_path(@category, total_pledged: true) %>
+<%= link_to "Most Funded", category_path(@category, most_funded: true) %>
 <%= render 'helpers/project_card' %>

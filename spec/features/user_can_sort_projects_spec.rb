@@ -22,6 +22,5 @@ RSpec.describe "a user can sort objects" do
     within all(".card").last do
       expect(page).to have_content("Jake the Dog")
     end
-
   end
 end

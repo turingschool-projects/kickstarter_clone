@@ -9,10 +9,24 @@ class CategoriesController < ApplicationController
     if params[:end_date]
       @projects = end_date(@projects)
     end
+    if params[:total_pledged]
+      @projects = sort_pledged(@projects)
+    end
+    if params[:most_funded]
+      @projects = sort_funding(@projects)
+    end
   end
 
   def end_date(projects)
     projects.sort { |a,b| a.days_remaining <=> b.days_remaining }
+  end
+
+  def sort_pledged(projects)
+    projects.sort { |a,b| b.total_pledged <=> a.total_pledged }
+  end
+
+  def sort_funding(projects)
+    projects.joins(:project_backers).group(:id).order('sum(pledge_amount)desc')
   end
 
 end

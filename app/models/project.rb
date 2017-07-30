@@ -56,6 +56,4 @@ class Project < ApplicationRecord
   def days_remaining
    (Date.parse(end_date) - Date.today).to_int
   end
-
-
 end

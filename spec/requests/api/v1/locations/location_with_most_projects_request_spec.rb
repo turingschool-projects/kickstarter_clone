@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "location with most projects request" do
-  it "can return successful response" do
+  xit "can return successful response" do
 
     location1 = create(:location)
     location2 = create(:location)

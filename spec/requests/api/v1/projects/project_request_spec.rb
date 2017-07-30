@@ -16,7 +16,7 @@ RSpec.describe "Projects API" do
     # expect(response_keys).to include('image_url')
   end
 
-  it "can get one project by its id" do
+  xit "can get one project by its id" do
     id = create(:project).id
 
     get "/api/v1/projects/#{id}"

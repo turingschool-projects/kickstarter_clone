@@ -13,7 +13,7 @@ RSpec.feature "doners can fund projects" do
 
       click_on("Back this project")
 
-      expect(current_path).to match(/#{project.id}\/rewards/)
+      expect(current_path).to match(/#{project.slug}\/rewards/)
 
       within(".rewards_list") do
           click_on "Continue", match: :first

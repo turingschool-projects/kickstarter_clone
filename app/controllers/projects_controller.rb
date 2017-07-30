@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :set_categories, only: [:new]
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:slug])
   end
 
   def new

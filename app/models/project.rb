@@ -25,6 +25,10 @@ class Project < ApplicationRecord
     self.slug = self.title.parameterize
   end
 
+  def to_param
+    [id, title.parameterize].join("-")
+  end
+
   def formatted_price
     number_to_currency(target_amount, unit: "$", format: "%u%n", precision: 0)
   end
@@ -56,7 +60,4 @@ class Project < ApplicationRecord
   def days_remaining
    (Date.parse(end_date) - Date.today).to_int
   end
-
-
-
 end

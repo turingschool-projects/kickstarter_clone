@@ -16,17 +16,23 @@ class Project < ApplicationRecord
              :category_id,
              :completion_date,
              presence: true
+  validates_format_of :title, :without => /^\d/, :multiline => true
 
   validates :slug, uniqueness: true
 
   before_create :create_slug
+
+  def self.find(input)
+    input.to_i == 0 ? find_by(slug: input) : super
+  end
 
   def create_slug
     self.slug = self.title.parameterize
   end
 
   def to_param
-    [id, title.parameterize].join("-")
+    slug
+    #[id, title.parameterize].join("-")
   end
 
   def formatted_price

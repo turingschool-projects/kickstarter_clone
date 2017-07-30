@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :project do
     sequence :title do |x|
-      "#{x} project"
+      "project #{x}"
     end
     sequence :target_amount do |x|
      (x * 100)

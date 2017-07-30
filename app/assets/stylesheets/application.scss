@@ -15,11 +15,20 @@
  */
 @import "materialize";
 .projects-show {
-  .card.horizontal {
-          display: -webkit-flex;
-          display: -ms-flexbox;
-          display: flex;
+  // .card.horizontal {
+  //         display: -webkit-flex;
+  //         display: -ms-flexbox;
+  //         display: flex;
+  //     }
+
+  .card-container {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: flex-center;
+      .card {
+
       }
+  }
 
   .container {
     width: 100%;

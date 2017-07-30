@@ -15,6 +15,9 @@ class CategoriesController < ApplicationController
     if params[:most_funded]
       @projects = sort_funding(@projects)
     end
+    if params[:magic]
+      @projects = by_magic(@projects)
+    end
   end
 
   def end_date(projects)
@@ -27,6 +30,10 @@ class CategoriesController < ApplicationController
 
   def sort_funding(projects)
     projects.joins(:project_backers).group(:id).order('sum(pledge_amount)desc')
+  end
+
+  def by_magic(projects)
+    projects.all.shuffle
   end
 
 end

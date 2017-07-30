@@ -30,4 +30,18 @@ Rails.application.routes.draw do
   resources :payments, only: [:create]
 
   resources :locations, only: [:new, :create]
+
+  namespace :api do
+    namespace :v1 do
+
+      namespace :projects do
+        get '/most_funded', to: 'most_funded#index'
+      end
+      resources :projects, only: [:show, :index]
+
+      namespace :locations do
+        get '/location_with_most_projects', to: 'location_with_most_projects#show'
+      end
+    end
+  end
 end

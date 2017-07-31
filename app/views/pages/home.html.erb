@@ -19,13 +19,19 @@
   <div class="card medium col s4">
    <h5>Most funded</h5>
    <%if @most_funded %>
-    <div class="card-image waves-effect waves-block waves-light">
+    <div class="card-image waves-effect waves-block waves-light style="max-height: 160px;">
       <%= image_tag @most_funded.image_url, class: "activator responsive-img" %>
     </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><%= link_to @most_funded.title, project_path(@most_funded) %><i class="material-icons right">more_vert</i></span>
+      <span class="card-title activator grey-text text-darken-4" style="line-height: 25px;"><%= link_to @most_funded.title, project_path(@most_funded) %><i class="material-icons right">more_vert</i></span>
       <div class="progress">
         <div class="determinate" style="width: <%= @most_funded.percentage_pledged %>%"></div>
+      </div>
+      <div class="project-stats">
+        <p><strong>$<%= number_with_delimiter(@most_funded.total_pledged, :delimiter => ',') %></strong> pledged</p>
+        <p><strong><%= @most_funded.percentage_pledged.round(0) %>%</strong> funded</p>
+        <p><strong><%= @most_funded.days_remaining %></strong> days to go</p>
+        <p><strong><%= @most_funded.project_backers.count %></strong> backers</p>
       </div>
     </div>
     <div class="card-reveal">

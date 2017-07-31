@@ -1,4 +1,4 @@
-<%= link_to "End Date", category_path(@category, end_date: true) %>
-<%= link_to "Most Pledged", category_path(@category, total_pledged: true) %>
-<%= link_to "Most Funded", category_path(@category, most_funded: true) %>
-<%= link_to "Magic", category_path(@category, magic: true) %>
+<%= link_to "End Date", category_path(@category, end_date: true), remote: true, id: "end-date" %>
+<%= link_to "Most Pledged", category_path(@category, total_pledged: true), id: "most-pledged" %>
+<%= link_to "Most Funded", category_path(@category, most_funded: true), id: "most-funded" %>
+<%= link_to "Magic", category_path(@category, magic: true), id: "magic"%>

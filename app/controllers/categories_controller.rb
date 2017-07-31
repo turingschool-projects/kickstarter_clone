@@ -6,6 +6,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find_by(name: params[:id]) || Category.find(params[:id])
     @projects = @category.projects
+
     if params[:end_date]
       @projects = end_date(@projects)
     end
@@ -17,6 +18,13 @@ class CategoriesController < ApplicationController
     end
     if params[:magic]
       @projects = by_magic(@projects)
+    end
+
+    respond_to do |format|
+      format.json do
+        render json: @projects
+      end
+      format.html
     end
   end
 

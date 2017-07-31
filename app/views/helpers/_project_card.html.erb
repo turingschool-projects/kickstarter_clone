@@ -13,6 +13,7 @@
         <p><strong>$<%= number_with_delimiter(project.total_pledged, :delimiter => ',') %></strong> pledged</p>
         <p><strong><%= project.percentage_pledged.round(0) %>%</strong> funded</p>
         <p><strong><%= project.days_remaining %></strong> days to go</p>
+        <p><strong><%= project.project_backers.count %></strong> backers</p>
       </div>
     </div>
     <div class="card-reveal">

@@ -1,11 +1,11 @@
 <nav>
   <div class="nav-wrapper">
-    <a href="#">Sorting</a>
+    <a style="font-size: 300%;" href="#">Sorting</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><%= link_to "End Date", category_path(@category, end_date: true), remote: true, id: "end-date" %></li>
       <li> <%= link_to "Most Pledged", category_path(@category, total_pledged: true), id: "most-pledged" %></li>
       <li><%= link_to "Most Funded", category_path(@category, most_funded: true), id: "most-funded" %></li>
-      <li><%= link_to "Magic", category_path(@category, magic: true), id: "magic"%></li> 
+      <li ><%= link_to "Magic", category_path(@category, magic: true), id: "magic"%></li>
     </ul>
   </div>
 </nav>

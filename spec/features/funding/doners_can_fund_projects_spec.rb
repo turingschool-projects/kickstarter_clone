@@ -16,7 +16,7 @@ RSpec.feature "doners can fund projects" do
       expect(current_path).to match(/#{project.slug}\/rewards/)
 
       within(".rewards_list") do
-          click_on "Continue", match: :first
+          click_on "Back this Project", match: :first
       end
 
       expect(current_path).to match(/checkout/)

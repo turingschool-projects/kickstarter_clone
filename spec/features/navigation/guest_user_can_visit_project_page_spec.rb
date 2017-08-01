@@ -20,7 +20,6 @@ RSpec.feature "As a guest user" do
       expect(page).to have_content(project.end_date)
 
       expect(page).to have_content("About this project")
-      expect(page).to have_content("Support this project")
     end
   end
 end

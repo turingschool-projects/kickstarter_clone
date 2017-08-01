@@ -19,6 +19,7 @@ gem 'rails-erd'
 gem 'twilio-ruby'
 gem 'figaro'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'rack-cors', require: 'rack/cors'
 
 group :development, :test do
   gem 'shoulda-matchers'

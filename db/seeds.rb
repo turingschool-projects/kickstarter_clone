@@ -12,7 +12,7 @@ class Seed
   end
 
   def generate_project_backers
-    50.times do
+    100.times do
       proj = ProjectBacker.create!(
                             project: Project.all.shuffle.first,
                             user: User.all.shuffle.first,
@@ -70,7 +70,7 @@ class Seed
     4.times.map do |n|
       Reward.create!({title: "reward_#{n}",
                       description: Faker::Hipster.paragraph,
-                      pledge_amount: n * 100,
+                      pledge_amount: (n+1) * 100,
                       limit: 4})
     end
   end

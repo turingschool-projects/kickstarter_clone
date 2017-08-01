@@ -68,7 +68,7 @@ class Seed
 
   def generate_rewards
     4.times.map do |n|
-      Reward.create!({title: "reward_#{n}",
+      Reward.create!({title: "Reward #{n}",
                       description: Faker::Hipster.paragraph,
                       pledge_amount: (n+1) * 100,
                       limit: 4})

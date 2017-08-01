@@ -4,6 +4,8 @@ RSpec.feature "doners can fund projects" do
   context "a logged in user" do
     it "can fund a project" do
       project = create(:project_with_rewards)
+      location = create(:location)
+      project.update(location_id: location.id)
       user = create(:user)
       allow_any_instance_of(ApplicationController).
         to receive(:current_user).

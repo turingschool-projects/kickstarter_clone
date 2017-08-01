@@ -21,10 +21,8 @@ class CategoriesController < ApplicationController
     end
 
     respond_to do |format|
-      format.json do
-        render json: @projects
-      end
       format.html
+      format.json
     end
   end
 

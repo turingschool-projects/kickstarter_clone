@@ -20,6 +20,7 @@ gem 'twilio-ruby'
 gem 'figaro'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'rack-cors', require: 'rack/cors'
+gem 'handlebars_assets', '~> 0.23.2'
 
 group :development, :test do
   gem 'shoulda-matchers'

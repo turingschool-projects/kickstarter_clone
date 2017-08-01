@@ -1,5 +1,5 @@
 class Location < ApplicationRecord
-  validates :postal_code, presence: true
+  validates :postal_code, presence: true, uniqueness: true
   has_many :projects
 
   def self.most_active

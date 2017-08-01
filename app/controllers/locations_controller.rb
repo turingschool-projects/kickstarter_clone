@@ -4,12 +4,17 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.new(location_params)
-    if @location.save
-      redirect_to new_project_path(location_id: @location.id)
+    if Location.find_by(postal_code: params['location']['postal_code']) == nil #ActiveRecord NotFound??
+      @location = Location.new(location_params)
+      if @location.save
+        redirect_to new_project_path(location_id: @location.id)
+      else
+        flash[:notice] = "Alert: Please input required fields."
+        redirect_to new_location_path
+      end
     else
-      flash[:notice] = "Alert: Please input required fields."
-      redirect_to new_location_path
+      @location = Location.find_by(postal_code: params['location']['postal_code'])
+      redirect_to new_project_path(location_id: @location.id)
     end
   end
 

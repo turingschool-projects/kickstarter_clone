@@ -25,7 +25,7 @@ describe "user can create a project" do
       expect(page).to have_content("Alert: Please input required fields.")
       expect(current_path).to eq(new_location_path)
 
-      fill_in "Postal code", with: "81625"
+      fill_in "Postal Code", with: "81625"
       fill_in "City", with: "Craig"
       fill_in "Country", with: "United States"
       click_on "Continue to Project"

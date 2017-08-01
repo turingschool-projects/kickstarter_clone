@@ -59,8 +59,8 @@ class Seed
       country: "United States"
     )
     Project.all.each do |project|
-      if project.location = nil
-        project.location << location
+      if project.location == nil
+        project.update(location_id: location.id)
       end
     end
   end

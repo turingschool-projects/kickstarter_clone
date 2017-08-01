@@ -16,14 +16,15 @@ RSpec.describe "Projects API" do
     # expect(response_keys).to include('image_url')
   end
 
-  xit "can get one project by its id" do
-    id = create(:project).id
+  it "can get one project by its id" do
+    project = create(:project)
 
-    get "/api/v1/projects/#{id}"
+    get "/api/v1/projects/#{project.id}"
 
-    project = JSON.parse(response.body)
+
+    project_hash = JSON.parse(response.body)
 
     expect(response).to be_success
-    expect(project["id"]).to eq(id)
+    expect(project_hash["title"]).to eq(project.title)
   end
 end

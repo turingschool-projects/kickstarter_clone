@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :location do
-    postal_code "80205"
+    sequence :postal_code do |x|
+      "8023#{x}"
+    end
     city "Denver"
     country "US"
   end

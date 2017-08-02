@@ -1,6 +1,6 @@
 # RollingPunches
-![alt text](http://i.imgur.com/a/p2gT4.png)
-![alt text](http://i.imgur.com/a/Qok69.png)
+![alt text](http://i.imgur.com/96t8LAv.jpg)
+![alt text](http://i.imgur.com/kKjOsBk.jpg)
 ## Description
 
 This is a [Kickstarter](https://www.kickstarter.com/) clone. Users can create a project, browse other projects, and they can back a project if they so desire. The user can browse projects by categories, and from there can filter the categories by specific parameters. This project uses two factor authentication with twilio when a user logs in. When the user is updating a location for a project they create the fields are autofilled with geolocate from the google places API.
@@ -13,7 +13,7 @@ This site is built with Javascript, SASS, CSS, Postgresql, Rails 5.1.2, Ruby ver
 
 Here's a look at the relationships in our database:
 
-![alt text](http://i.imgur.com/a/bCl1v.png)
+![alt text](http://i.imgur.com/SpcPDYT.png)
 
 ##Heroku
   * [Visit us on Heroku](https://ks-clone.herokuapp.com/)

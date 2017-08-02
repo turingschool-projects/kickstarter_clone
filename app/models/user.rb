@@ -22,21 +22,9 @@ class User < ApplicationRecord
   end
 
   def self.total_pledged(user)
-    User.find_by_sql(
-      <<~END
-      select u.id, sum(pb.pledge_amount) as total_pledged
-      from users as u
-      join project_backers as pb
-      	on pb.user_id = u.id
-      where u.id = #{user}
-      group by 1
-      END
-    )
-    # .where(users: {id: user})
-    # .joins(:project_backers)
-    # .group(:id)
-    # .order("total_pledged DESC")
+    pledges = ProjectBacker.select("project_backers.user_id, project_backers.pledge_amount")
+      .where(user_id: user)
 
-    #binding.pry
+    pledges.pluck(:pledge_amount).reduce(:+)
   end
 end

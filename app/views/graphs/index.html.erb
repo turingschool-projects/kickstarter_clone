@@ -49,7 +49,7 @@
         for(var i = 0, len = Top5MostActive.length; i < len; i++) {
           let location = Top5MostActive[i];
           chartOptions.data.labels.push(location.city + " " + location.country);
-          // chartOptions.data.datasets[0].data.push(location.projects.count);
+          chartOptions.data.datasets[0].data.push(location.project_count);
         }
         var myChart = new Chart(ctx, chartOptions);
       }

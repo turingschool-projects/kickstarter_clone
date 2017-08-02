@@ -7,14 +7,16 @@ class Location < ApplicationRecord
   end
 
   def self.top_5_most_active
-    sql = 'SELECT locations.*, count(locations.id)
-           AS location_count
+    sql = 'SELECT locations.*, count(projects.location_id)
+           AS project_count
            FROM "locations"
            INNER JOIN "projects"
            ON "projects"."location_id" = "locations"."id"
            GROUP BY "locations"."id"
-           ORDER BY location_count DESC
+           ORDER BY project_count DESC
            LIMIT 5'
-    Location.find_by_sql(sql)
+    records_array = ActiveRecord::Base.connection.execute(sql)
+    # Location.find_by_sql(sql)
+    # binding.pry
   end
 end

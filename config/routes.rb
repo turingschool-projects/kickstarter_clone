@@ -42,6 +42,10 @@ Rails.application.routes.draw do
       namespace :locations do
         get '/location_with_most_projects', to: 'location_with_most_projects#show'
       end
+
+      namespace :users do
+        get '/biggest_donor', to: 'biggest_donor#show'
+      end
     end
   end
 end

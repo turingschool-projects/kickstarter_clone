@@ -41,8 +41,8 @@ To run locally:
   * ```rspec```
 
 ##Contributors
-[Sarah Kirk](https://github.com/sarahdactyl71)
-[Nick Edwards](https://github.com/nickedwards109)
-[Ben Ross](https://github.com/Benja-Ross)
-[Tom Soucie](https://github.com/TomSoucie)
-[William Thomas](https://github.com/wthoma22)
+* [Sarah Kirk](https://github.com/sarahdactyl71)
+* [Nick Edwards](https://github.com/nickedwards109)
+* [Ben Ross](https://github.com/Benja-Ross)
+* [Tom Soucie](https://github.com/TomSoucie)
+* [William Thomas](https://github.com/wthoma22)

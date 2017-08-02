@@ -1,26 +1,48 @@
-# README
+# RollingPunches
+![alt text](http://imgur.com/a/p2gT4)
+![alt text](http://imgur.com/a/Qok69)
+## Description
 
-## Notes from the team
+This is a [Kickstarter](https://www.kickstarter.com/) clone. Users can create a project, browse other projects, and they can back a project if they so desire. The user can browse projects by categories, and from there can filter the categories by specific parameters. This project uses two factor authentication with twilio when a user logs in. When the user is updating a location for a project they create the fields are autofilled with geolocate from the google places API.
 
-### Cody
+## Stack
 
+This site is built with Javascript, SASS, CSS, Postgresql, Rails 5.1.2, Ruby version 2.4.1, Google Places API, & Twilio API.
 
-### Jack
-For twilio: trial accounts only allow you to send to confirmed numbers (basically just whoever is associated with the account) the text confirmation is set up to not pull the users phone number, but to the trial accounts confirmed number (mine). You should set yourself up with a trial account and change the appropriate application.yml keys and the associated number. As a workaround, 1234 or the sent code will always pass the confirmation code.
-The TwilioSender.send service can take an optional parameter of a user phone number. Because of the trial limitation, you should not pass in the user phone number unless you upgrade your twilio account to allow unconfirmed number texting
-### Josh
+## Schema
 
-- For user authentication, we're using [sorcery](https://github.com/NoamB/sorcery)
-- [this guide](https://www.sitepoint.com/magical-authentication-sorcery/) is what got it working. Top notch!
+Here's a look at the relationships in our database:
 
+![alt text](http://imgur.com/a/bCl1v)
 
-### Mark
+##Heroku
+  * [Visit us on Heroku](https://ks-clone.herokuapp.com/)
 
-### Sergey
-#### Google Maps Embed API
-First you must register your app project on the Google API Console and get a [Google API key](https://developers.google.com/maps/documentation/embed/get-api-key). 
-[Google Maps Embed API](https://developers.google.com/maps/documentation/embed/guide) lets you place an interactive map, or Street View panorama on your site with a simple HTTP request
+## Local Install
 
-## Misc resources we've used
+  ### You Need:
+  * [Rails version 5.1](http://installrails.com/)
 
--
+  * [Ruby version 2.4.1](https://www.ruby-lang.org/en/documentation/installation/)
+
+To run locally:
+  * clone this repo.
+  * cd into it
+  * ```bundle```
+  * ```bundle exec figaro install```
+  * There are several required environmental variables. Ask project contributors for required values to add into application.yml.
+  * ```rake db:setup```
+  * ```rake db:seed```
+  * ```rails assets:precompile```
+  * ```rails server```
+  * go to ```localhost:30000``` and click on a project.
+
+## Testing Suite
+  * ```rspec```
+
+##Contributors
+[Sarah Kirk](https://github.com/sarahdactyl71)
+[Nick Edwards](https://github.com/nickedwards109)
+[Ben Ross](https://github.com/Benja-Ross)
+[Tom Soucie](https://github.com/TomSoucie)
+[William Thomas](https://github.com/wthoma22)

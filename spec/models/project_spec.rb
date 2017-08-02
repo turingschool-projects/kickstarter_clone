@@ -22,7 +22,7 @@ RSpec.describe Project, type: :model do
 
   describe "associations" do
     it { should belong_to(:category) }
-    it { should belong_to(:country)}
+    it { should belong_to(:location)}
     it { should have_many(:rewards) }
     it { should have_many(:project_backers) }
     it { should have_many(:backers).through(:project_backers) }
@@ -76,9 +76,9 @@ RSpec.describe Project, type: :model do
   end
 
   describe "#days_remaining" do
-    it "returns the days remaining as a string" do
+    it "returns the days remaining as an integer" do
       project = create(:project)
-      expect(project.days_remaining).to match(/\d/)
+      expect(project.days_remaining).to be_a(Integer)
     end
   end
 end

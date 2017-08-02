@@ -1,11 +1,20 @@
 <div class="project-list row container">
   <% @projects.each do |project| %>
   <div class="card medium col s4 m3 l3">
-    <div class="card-image waves-effect waves-block waves-light">
+    <div class="card-image waves-effect waves-block waves-light style="max-height: 160px;">
       <%= image_tag project.image_url, class: "activator responsive-img" %>
     </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4"><%= link_to project.title, project_path(project) %><i class="material-icons right">more_vert</i></span>
+    <div class="card-content" style="min-height: 265px;">
+      <span class="card-title activator grey-text text-darken-4" style="line-height: 25px;"><%= link_to project.title, project_path(project) %><i class="material-icons right">more_vert</i></span>
+      <div class="progress">
+        <div class="determinate" style="width: <%= project.percentage_pledged %>%"></div>
+      </div>
+      <div class="project-stats">
+        <p><strong>$<%= number_with_delimiter(project.total_pledged, :delimiter => ',') %></strong> pledged</p>
+        <p><strong><%= project.percentage_pledged.round(0) %>%</strong> funded</p>
+        <p><strong><%= project.days_remaining %></strong> days to go</p>
+        <p><strong><%= project.project_backers.count %></strong> backers</p>
+      </div>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4"><%= project.title %><i class="material-icons right">close</i></span>

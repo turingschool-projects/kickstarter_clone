@@ -4,6 +4,8 @@ RSpec.feature "As a guest user" do
   context "they can click on project" do
     it "and can visit project page" do
       project = create(:project)
+      location = create(:location)
+      project.update(location_id: location.id)
 
       visit root_path
 
@@ -20,7 +22,6 @@ RSpec.feature "As a guest user" do
       expect(page).to have_content(project.end_date)
 
       expect(page).to have_content("About this project")
-      expect(page).to have_content("Support this project")
     end
   end
 end

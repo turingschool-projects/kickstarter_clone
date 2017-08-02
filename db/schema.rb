@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524214342) do
+ActiveRecord::Schema.define(version: 20170727153010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,18 +21,10 @@ ActiveRecord::Schema.define(version: 20170524214342) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "cities", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "country_id"
-    t.index ["country_id"], name: "index_cities_on_country_id", using: :btree
-  end
-
-  create_table "countries", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "locations", force: :cascade do |t|
+    t.string "postal_code"
+    t.string "city"
+    t.string "country"
   end
 
   create_table "project_backers", force: :cascade do |t|
@@ -66,11 +58,9 @@ ActiveRecord::Schema.define(version: 20170524214342) do
     t.integer  "category_id"
     t.datetime "completion_date"
     t.string   "slug"
-    t.integer  "country_id"
-    t.integer  "city_id"
+    t.integer  "location_id"
     t.index ["category_id"], name: "index_projects_on_category_id", using: :btree
-    t.index ["city_id"], name: "index_projects_on_city_id", using: :btree
-    t.index ["country_id"], name: "index_projects_on_country_id", using: :btree
+    t.index ["location_id"], name: "index_projects_on_location_id", using: :btree
   end
 
   create_table "rewards", force: :cascade do |t|
@@ -93,14 +83,12 @@ ActiveRecord::Schema.define(version: 20170524214342) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
-  add_foreign_key "cities", "countries"
   add_foreign_key "project_backers", "projects"
   add_foreign_key "project_backers", "rewards"
   add_foreign_key "project_backers", "users"
   add_foreign_key "project_owners", "projects"
   add_foreign_key "project_owners", "users"
   add_foreign_key "projects", "categories"
-  add_foreign_key "projects", "cities"
-  add_foreign_key "projects", "countries"
+  add_foreign_key "projects", "locations"
   add_foreign_key "rewards", "projects"
 end

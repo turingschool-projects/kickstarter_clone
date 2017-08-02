@@ -1,0 +1,31 @@
+$(document).ready(function() {
+
+  $('#end-date').on('click', function() {
+    return $.ajax({
+      url: 'http://localhost:3000/categories/1',
+      dataType: 'json',
+      contentType: 'application/json',
+      method: 'GET'
+    }).done(function(projects){
+      $('.project-list').children(".card").remove();
+      projects.forEach(function(project) {
+        var slug = project.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+        project["slug"] = slug;
+        $('.project-list').append(HandlebarsTemplates['project_cards'](project));
+      });
+    })
+  })
+
+  $('#most-pledged').on('click', function() {
+    alert("HEY")
+  })
+
+  $('#most-funded').on('click', function() {
+    alert("HEY")
+  })
+
+  $('#magic').on('click', function() {
+    alert("HEY")
+  })
+
+})

@@ -1,10 +1,9 @@
 class ProjectsController < ApplicationController
   before_action :require_login, only: [:new]
   before_action :set_categories, only: [:new]
-  before_action :set_countries, only: [:new]
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:slug])
   end
 
   def new
@@ -13,7 +12,6 @@ class ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.new(project_params)
-
     if @project.save
       redirect_to new_reward_path(project_id: @project.id)
     else
@@ -28,20 +26,16 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:title,
+        params.require(:project).permit(:title,
                                       :description,
                                       :image_url,
                                       :target_amount,
                                       :category_id,
-                                      :country_id,
-                                      :completion_date)
+                                      :completion_date,
+                                      :location_id)
     end
 
     def set_categories
       @categories = Category.category_list
-    end
-
-    def set_countries
-      @countries = Country.country_list
     end
 end

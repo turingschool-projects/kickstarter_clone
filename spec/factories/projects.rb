@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :project do
     sequence :title do |x|
-      "#{x} project"
+      "project #{x}"
     end
     sequence :target_amount do |x|
      (x * 100)
@@ -18,8 +18,5 @@ FactoryGirl.define do
     factory :project_with_backers do
       project_backers {create_list(:project_backer, 3)}
     end
-    association :city, :strategy => :build
-    association :country, :strategy => :build
-    # city { |city| city.association :city, :strategy => :build } 
   end
 end

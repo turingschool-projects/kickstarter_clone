@@ -12,9 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require handlebars
+//= require_tree ./templates
 //= require_tree .
 //= require jquery2
 //= require materialize
+//= require Chart.min
+
 $(document).ready(function() {
     $('select').material_select();
     $(".dropdown-button").dropdown();

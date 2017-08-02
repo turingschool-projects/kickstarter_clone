@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "biggest_donor request" do
-  it "can return successful response" do
+  xit "can return successful response" do
 
     user1 = create(:user)
     user2 = create(:user)

@@ -9,6 +9,7 @@ class Seed
     seed.generate_users
     seed.generate_user_with_projects
     seed.generate_project_backers
+    seed.assign_location
   end
 
   def generate_project_backers
@@ -40,7 +41,7 @@ class Seed
   end
 
   def generate_locations
-    10.times do |n|
+    20.times do |n|
       location = Location.create!(
         postal_code: Faker::Address.postcode,
         city: Faker::Address.city,
@@ -48,6 +49,19 @@ class Seed
       )
       location.projects << Project.all.shuffle[0..4]
     puts "Location #{n} has been created"
+    end
+  end
+
+  def assign_location
+    location = Location.create!(
+      postal_code: "80202",
+      city: "Denver",
+      country: "United States"
+    )
+    Project.all.each do |project|
+      if project.location == nil
+        project.update(location_id: location.id)
+      end
     end
   end
 
@@ -68,7 +82,7 @@ class Seed
 
   def generate_rewards
     4.times.map do |n|
-      Reward.create!({title: "reward_#{n}",
+      Reward.create!({title: "Reward #{n}",
                       description: Faker::Hipster.paragraph,
                       pledge_amount: (n+1) * 100,
                       limit: 4})
